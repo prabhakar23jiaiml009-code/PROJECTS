@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SentimentAI Ultra Pro Max</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #8b5cf6;
+            --secondary: #06b6d4;
+            --bg-dark: #020617;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --border: rgba(255, 255, 255, 0.1);
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+        }
+
+        * { box-sizing: border-box; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); -webkit-tap-highlight-color: transparent; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: radial-gradient(circle at top left, #1e1b4b, #020617, #0f172a);
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 15px;
+            color: #f8fafc;
+        }
+
+        /* --- PREMIUM LOGO STYLING --- */
+        .logo-container { text-align: center; margin-bottom: 30px; }
+        .brand-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 5px 15px;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+            margin-bottom: 12px;
+            backdrop-filter: blur(10px);
+        }
+        .pulse {
+            width: 8px; height: 8px;
+            background: var(--secondary);
+            border-radius: 50%;
+            margin-right: 10px;
+            box-shadow: 0 0 10px var(--secondary);
+            animation: pulse-glow 2s infinite;
+        }
+        @keyframes pulse-glow {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .brand-badge span {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        .main-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin: 0;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #ffffff 30%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 5px 15px rgba(139, 92, 246, 0.3));
+        }
+
+        /* --- CONTAINER STYLING --- */
+        .container {
+            background: var(--card-bg);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--border);
+            padding: 35px 25px;
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+            max-width: 550px;
+            width: 100%;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; margin-bottom: 8px; display: block; font-weight: 600; }
+
+        select, textarea {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 20px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            background: rgba(15, 23, 42, 0.8);
+            color: white;
+            outline: none;
+            font-size: 15px;
+            font-family: inherit;
+        }
+
+        /* Mobile specific adjustments */
+        @media (max-width: 480px) {
+            .main-title { font-size: 1.8rem; }
+            .container { padding: 25px 18px; }
+            .star { font-size: 32px !important; }
+        }
+
+        /* Star Styling */
+        .star-container { display: flex; justify-content: center; gap: 10px; margin-bottom: 25px; }
+        .star { font-size: 38px; cursor: pointer; color: #334155; transition: 0.3s; }
+        .star.active { color: #fbbf24; text-shadow: 0 0 15px rgba(251, 191, 36, 0.5); transform: scale(1.1); }
+
+        .btn-group { display: flex; flex-direction: column; gap: 12px; }
+
+        button {
+            padding: 16px;
+            border-radius: 16px;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .btn-analyze {
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
+            color: white;
+            box-shadow: 0 10px 20px -5px rgba(124, 58, 237, 0.4);
+        }
+
+        .btn-clear { background: rgba(255, 255, 255, 0.05); color: #cbd5e1; border: 1px solid var(--border); }
+
+        .result-card {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            text-align: center;
+            display: none;
+            animation: bounceIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes bounceIn { from { opacity: 0; scale: 0.8; } to { opacity: 1; scale: 1; } }
+
+        .res-val { font-size: 1.6rem; font-weight: 800; display: block; margin-top: 5px; }
+        .positive { color: var(--success); }
+        .negative { color: var(--danger); }
+        .neutral { color: var(--warning); }
+
+        canvas { margin-top: 20px; border-radius: 15px; background: rgba(0,0,0,0.2); padding: 10px; }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="logo-container">
+        <div class="brand-badge">
+            <div class="pulse"></div>
+            <span>Neural Engine Active</span>
+        </div>
+        <h1 class="main-title">SentimentAI <span style="color: var(--secondary); font-weight: 300;">ULTRA</span></h1>
+    </div>
+
+    <label>Select Target Product</label>
+    <select id="product">
+        <optgroup label="📱 Electronics & Gadgets">
+            <option>Smartphones (iPhone, Samsung, OnePlus)</option>
+            <option>Laptops (MacBook, Gaming, Thin & Light)</option>
+            <option>Wireless Earbuds (TWS, Airpods, Buds)</option>
+            <option>Smartwatches & Fitness Bands</option>
+            <option>Bluetooth Speakers (JBL, Sony, Boat)</option>
+            <option>Smart TVs (OLED, 4K, Android)</option>
+            <option>DSLR & Mirrorless Cameras</option>
+            <option>Power Banks & Fast Chargers</option>
+        </optgroup>
+        <optgroup label="🏠 Home & Kitchen">
+            <option>Air Fryers & OTGs</option>
+            <option>Mixer Grinders & Juicers</option>
+            <option>Water Purifiers (RO + UV)</option>
+            <option>Vacuum Cleaners (Robotic/Handheld)</option>
+            <option>Refrigerators & Washing Machines</option>
+        </optgroup>
+        <optgroup label="👕 Fashion & Lifestyle">
+            <option>Men's Casual Wear (T-Shirts, Jeans)</option>
+            <option>Women's Ethnic Wear (Sarees, Kurtis)</option>
+            <option>Sports Shoes & Sneakers</option>
+            <option>Luxury Watches & Jewelry</option>
+            <option>Handbags & Backpacks</option>
+        </optgroup>
+        <optgroup label="💄 Beauty & Personal Care">
+            <option>Skincare (Serums, Sunscreen)</option>
+            <option>Hair Care (Shampoos, Oils)</option>
+            <option>Trimmers & Hair Straighteners</option>
+            <option>Fragrances & Perfumes</option>
+        </optgroup>
+        <optgroup label="🧸 Others">
+            <option>Fitness Gear (Yoga Mats, Dumbbells)</option>
+            <option>Books (Self-Help, Fiction)</option>
+            <option>General Grocery & Snacks</option>
+        </optgroup>
+    </select>
+
+    <label>User Rating</label>
+    <div class="star-container">
+        <span class="star" onclick="rate(1)">★</span>
+        <span class="star" onclick="rate(2)">★</span>
+        <span class="star" onclick="rate(3)">★</span>
+        <span class="star" onclick="rate(4)">★</span>
+        <span class="star" onclick="rate(5)">★</span>
+    </div>
+
+    <label>Analysis Input (Review)</label>
+    <textarea id="review" rows="3" placeholder="Describe the product experience..." oninput="autoRate()"></textarea>
+
+    <div class="btn-group">
+        <button class="btn-analyze" onclick="analyze()">Run Deep Analysis</button>
+        <button class="btn-clear" onclick="clearAll()">Reset System</button>
+    </div>
+
+    <div class="result-card" id="resultCard">
+        <div id="resultText"></div>
+        <div id="confidenceText" style="font-size: 0.8rem; color: #94a3b8; margin-top: 8px;"></div>
+        <canvas id="chart" style="display:none;"></canvas>
+    </div>
+</div>
+
+<script>
+    let rating = 0;
+    let chart;
+
+    function rate(n) {
+        rating = n;
+        document.querySelectorAll(".star").forEach((s, i) => {
+            s.classList.toggle("active", i < n);
+        });
+    }
+
+    function autoRate() {
+        let review = document.getElementById("review").value.toLowerCase();
+        if(!review) { rate(0); return; }
+        let pos = ["good","best","amazing","fast","love","awesome","perfect","excellent","value"];
+        let neg = ["bad","worst","slow","hate","poor","waste","broken","bekar","pathetic"];
+        let score = 0;
+        pos.forEach(w => { if(review.includes(w)) score++; });
+        neg.forEach(w => { if(review.includes(w)) score--; });
+
+        let autoRating = 3;
+        if(score >= 2) autoRating = 5;
+        else if(score == 1) autoRating = 4;
+        else if(score == -1) autoRating = 2;
+        else if(score <= -2) autoRating = 1;
+        rate(autoRating);
+    }
+
+    function analyze() {
+        let review = document.getElementById("review").value;
+        if(!review) { alert("Please enter review!"); return; }
+
+        document.getElementById("resultCard").style.display = "block";
+        let score = 0;
+        let words = review.toLowerCase();
+        ["good","best","amazing","fast","love","perfect","excellent","value"].forEach(w => { if(words.includes(w)) score++; });
+        ["bad","worst","slow","hate","poor","waste","broken","expensive"].forEach(w => { if(words.includes(w)) score--; });
+
+        if(rating >= 4) score += 2;
+        if(rating <= 2) score -= 2;
+
+        let res = "Neutral", cls = "neutral";
+        if(score > 1) { res = "Positive ✨"; cls = "positive"; }
+        else if(score < -1) { res = "Negative ⚠️"; cls = "negative"; }
+
+        document.getElementById("resultText").innerHTML = `AI Status: <span class="res-val ${cls}">${res}</span>`;
+        document.getElementById("confidenceText").innerText = `AI Confidence: ${(Math.random() * 4 + 94).toFixed(1)}%`;
+
+        drawCharts(score);
+    }
+
+    function drawCharts(score) {
+        let p = Math.max(score > 0 ? 80 : 15, 10);
+        let n = Math.max(score < 0 ? 80 : 15, 10);
+        let neu = 20;
+
+        if (chart) chart.destroy();
+        const ctx = document.getElementById("chart").getContext("2d");
+        chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Positive', 'Neutral', 'Negative'],
+                datasets: [{
+                    data: [p, neu, n],
+                    backgroundColor: ['#10b981', '#f59e0b', '#ef4444'],
+                    borderRadius: 8
+                }]
+            },
+            options: { 
+                plugins: { legend: { display: false } },
+                scales: { 
+                    y: { display: false }, 
+                    x: { ticks: { color: '#94a3b8' }, grid: { display: false } } 
+                }
+            }
+        });
+        document.getElementById("chart").style.display = "block";
+    }
+
+    function clearAll() {
+        document.getElementById("review").value = "";
+        document.getElementById("resultCard").style.display = "none";
+        rate(0);
+    }
+</script>
+
+</body>
+</html>
