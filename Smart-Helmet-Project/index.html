@@ -1,0 +1,729 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SENSA Road Helmet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            
+        }
+
+        body {
+            background-color: #0f172a;
+            color: #fff;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 20px;
+            text-align: center;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url("img/bike.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 30rem;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-top: 150px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .head {
+            margin-top: -80px;
+            margin-left: 500px;
+        }
+
+        .nav-link {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-link li a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+        }
+
+        .nav-link li a:hover {
+            color: #00f7ff;
+        }
+
+        /* Features */
+        .features {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .feature-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .box {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .box:hover {
+            transform: translateY(-8px);
+        }
+
+        /* Highlight */
+        .highlight {
+            background: #111827;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        /* Dashboard */
+        .dashboard {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .status {
+            padding: 20px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .green {
+            background-color: #16a34a;
+        }
+
+        .red {
+            background-color: #dc2626;
+        }
+
+        /* CTA SECTION */
+        .cta {
+            background: linear-gradient(90deg, #06b6d4, #2563eb);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 38px;
+        }
+
+        .cta p {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        /* MODERN CTA BUTTON */
+        .cta-btn {
+            background-color: #0f172a;
+            color: #ffffff;
+            padding: 15px 45px;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            margin-top: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: #1e293b;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .cta-btn:active {
+            transform: translateY(0px);
+            box-shadow: none;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 60px 20px;
+            background: #0f172a;
+            text-align: left;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: none;
+        }
+
+        .contact-form button {
+            padding: 10px 20px;
+            border: none;
+            background: #06b6d4;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        footer {
+            background: #111827;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+
+    <header class="hero">
+        <div class="head">
+            <ul class="nav-link">
+                <li><a href="#">Home</a></li>
+                <li><a href="feature.html">Features</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="category.html">Category</a></li>
+            </ul>
+        </div>
+
+        <h1>SENSA Road Helmet</h1>
+        <p>Smart Protection. Smart Riding.</p>
+    </header>
+
+    <section class="features">
+        <h2>Why Choose SENSA?</h2>
+        <div class="feature-box">
+            <div class="box">
+                <h3>Smart Helmet Lock</h3>
+                <p>Bike ignition activates only when helmet is worn properly.</p>
+            </div>
+            <div class="box">
+                <h3>Alcohol Safety Sensor</h3>
+                <p>Prevents riding if alcohol level crosses safe limit.</p>
+            </div>
+            <div class="box">
+                <h3>Accident Alert System</h3>
+                <p>Instant emergency alert with live GPS location.</p>
+            </div>
+            <div class="box">
+                <h3>Smart Speed Control</h3>
+                <p>Detects over-speeding and alerts the rider.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="highlight">
+        <h2>Built for Modern Riders</h2>
+        <p>SENSA integrates advanced sensors for maximum protection.</p>
+    </section>
+
+    <section class="dashboard">
+        <h2>Live Safety Status</h2>
+        <div class="status-grid">
+            <div class="status green">Helmet Connected</div>
+            <div class="status green">Alcohol Safe</div>
+            <div class="status red">No Accident</div>
+            <div class="status green">GPS Active</div>
+        </div>
+    </section>
+
+     CTA SECTION 
+    <section class="cta">
+        <h2>Ride Safe. Ride Smart.</h2>
+        <p>Experience next-generation road safety technology today.</p>
+        <a href="map.html"><button class="cta-btn" onclick="goToReact()">Get Started</button></a>
+        
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-container">
+            <div>
+                <p>📍 Mumbai, India</p>
+                <p>📧 support@sensa.com</p>
+                <p>📞 +91 98765 43210</p>
+            </div>
+            <form class="contact-form">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <textarea placeholder="Your Message"></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 SENSA Road Helmet | Smart Mobility Innovation</p>
+    </footer>
+
+    React Redirect Script
+    <script>
+        function goToReact() {
+            window.location.href = "http://localhost:3000";
+        }
+    </script>
+
+</body>
+</html>. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SENSA Road Helmet</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+}
+
+/* NAVBAR */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+background:#111827;
+flex-wrap:wrap;
+}
+
+.logo{
+font-size:22px;
+font-weight:bold;
+}
+
+.nav-links{
+list-style:none;
+display:flex;
+gap:25px;
+}
+
+.nav-links a{
+text-decoration:none;
+color:white;
+font-weight:500;
+}
+
+.nav-links a:hover{
+color:#00f7ff;
+}
+
+
+/* HERO */
+
+.hero{
+text-align:center;
+padding:120px 20px;
+background-image:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+url("img/bike.jpg");
+background-size:cover;
+background-position:center;
+}
+
+.hero h1{
+font-size:48px;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:20px;
+}
+
+
+/* FEATURES */
+
+.features{
+padding:60px 20px;
+text-align:center;
+}
+
+.feature-box{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+margin-top:30px;
+}
+
+.box{
+background:#1e293b;
+padding:25px;
+border-radius:10px;
+transition:0.3s;
+}
+
+.box:hover{
+transform:translateY(-8px);
+}
+
+
+/* HIGHLIGHT */
+
+.highlight{
+background:#111827;
+padding:60px 20px;
+text-align:center;
+}
+
+
+/* DASHBOARD */
+
+.dashboard{
+padding:60px 20px;
+text-align:center;
+}
+
+.status-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+margin-top:30px;
+}
+
+.status{
+padding:20px;
+border-radius:8px;
+font-weight:bold;
+}
+
+.green{
+background:#16a34a;
+}
+
+.red{
+background:#dc2626;
+}
+
+
+/* CTA */
+
+.cta{
+background:linear-gradient(90deg,#06b6d4,#2563eb);
+padding:80px 20px;
+text-align:center;
+}
+
+.cta h2{
+font-size:36px;
+}
+
+.cta p{
+margin-top:10px;
+}
+
+.cta-btn{
+background:#0f172a;
+color:white;
+padding:15px 40px;
+font-size:18px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+margin-top:25px;
+transition:0.3s;
+}
+
+.cta-btn:hover{
+transform:translateY(-5px);
+box-shadow:0 15px 30px rgba(0,0,0,0.4);
+}
+
+
+/* CONTACT */
+
+.contact{
+padding:60px 20px;
+}
+
+.contact-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:40px;
+margin-top:30px;
+}
+
+.contact-form input,
+.contact-form textarea{
+width:100%;
+padding:12px;
+margin-bottom:15px;
+border-radius:6px;
+border:none;
+}
+
+.contact-form button{
+padding:10px 20px;
+border:none;
+background:#06b6d4;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+
+
+/* FOOTER */
+
+footer{
+background:#111827;
+padding:20px;
+text-align:center;
+}
+
+
+/* ===================== */
+/* MOBILE RESPONSIVE */
+/* ===================== */
+
+@media (max-width:900px){
+
+.navbar{
+flex-direction:column;
+gap:15px;
+}
+
+.nav-links{
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.hero h1{
+font-size:34px;
+}
+
+.hero p{
+font-size:16px;
+}
+
+.cta h2{
+font-size:28px;
+}
+
+}
+
+@media (max-width:500px){
+
+.hero{
+padding:90px 15px;
+}
+
+.hero h1{
+font-size:26px;
+}
+
+.cta-btn{
+width:100%;
+}
+
+.nav-links{
+flex-direction:column;
+align-items:center;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+<div class="logo">SENSA</div>
+
+<ul class="nav-links">
+<li><a href="#">Home</a></li>
+<li><a href="feature.html">Features</a></li>
+<li><a href="login.html">Login</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="#contact">Contact</a></li>
+<li><a href="category.html">Category</a></li>
+</ul>
+
+</div>
+
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<h1>SENSA Road Helmet</h1>
+
+<p>Smart Protection. Smart Riding.</p>
+
+</section>
+
+
+
+<!-- FEATURES -->
+
+<section class="features">
+
+<h2>Why Choose SENSA?</h2>
+
+<div class="feature-box">
+
+<div class="box">
+<h3>Smart Helmet Lock</h3>
+<p>Bike ignition activates only when helmet is worn properly.</p>
+</div>
+
+<div class="box">
+<h3>Alcohol Safety Sensor</h3>
+<p>Prevents riding if alcohol level crosses safe limit.</p>
+</div>
+
+<div class="box">
+<h3>Accident Alert System</h3>
+<p>Instant emergency alert with live GPS location.</p>
+</div>
+
+<div class="box">
+<h3>Smart Speed Control</h3>
+<p>Detects over-speeding and alerts the rider.</p>
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- HIGHLIGHT -->
+
+<section class="highlight">
+
+<h2>Built for Modern Riders</h2>
+
+<p>SENSA integrates advanced sensors for maximum protection.</p>
+
+</section>
+
+
+
+<!-- DASHBOARD -->
+
+<section class="dashboard">
+
+<h2>Live Safety Status</h2>
+
+<div class="status-grid">
+
+<div class="status green">Helmet Connected</div>
+
+<div class="status green">Alcohol Safe</div>
+
+<div class="status red">No Accident</div>
+
+<div class="status green">GPS Active</div>
+
+</div>
+
+</section>
+
+
+
+<!-- CTA -->
+
+<section class="cta">
+
+<h2>Ride Safe. Ride Smart.</h2>
+
+<p>Experience next-generation road safety technology today.</p>
+
+<a href="map.html">
+
+<button class="cta-btn">Get Started</button>
+
+</a>
+
+</section>
+
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+<h2>Contact Us</h2>
+
+<div class="contact-container">
+
+<div>
+
+<p>📍 Mumbai, India</p>
+<p>📧 support@sensa.com</p>
+<p>📞 +91 98765 43210</p>
+
+</div>
+
+<form class="contact-form">
+
+<input type="text" placeholder="Full Name" required>
+
+<input type="email" placeholder="Email Address" required>
+
+<textarea placeholder="Your Message"></textarea>
+
+<button type="submit">Send Message</button>
+
+</form>
+
+</div>
+
+</section>
+
+
+
+<footer>
+
+<p>© 2026 SENSA Road Helmet | Smart Mobility Innovation</p>
+
+</footer>
+
+</body>
+</html>
