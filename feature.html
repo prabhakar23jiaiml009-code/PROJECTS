@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SENSA Features</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+                url("img/Rider.webp");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            /* background:linear-gradient(135deg,#0f2027,#203a43,#2c5364); */
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* ===== SECTION TITLE ===== */
+        .section-title {
+            text-align: center;
+            padding: 70px 20px 20px;
+        }
+
+        .section-title h1 {
+            font-size: 42px;
+            background: linear-gradient(90deg, #00f7ff, #00ffae);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .section-title p {
+            max-width: 750px;
+            margin: 15px auto;
+            opacity: 0.85;
+        }
+
+        /* ===== CATEGORY TITLE ===== */
+        .category {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 28px;
+            color: #00ffae;
+        }
+
+        /* ===== GRID ===== */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 40px;
+        }
+
+        /* ===== CARD ===== */
+        .feature-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            border-radius: 18px;
+            transition: 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        .feature-card::before {
+            content: "";
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            background: linear-gradient(45deg, #00f7ff, #00ffae, #2563eb);
+            top: -10%;
+            left: -10%;
+            z-index: -1;
+            filter: blur(60px);
+            opacity: 0;
+            transition: 0.4s;
+        }
+
+        .feature-card:hover::before {
+            opacity: 0.6;
+        }
+
+        .feature-card h3 {
+            margin: 15px 0;
+            font-size: 20px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            opacity: 0.85;
+        }
+
+        /* ===== ICON STYLE ===== */
+        .icon {
+            font-size: 40px;
+        }
+
+        /* ===== BACK BUTTON ===== */
+        .back-btn {
+            display: block;
+            width: 200px;
+            margin: 60px auto;
+            padding: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            border-radius: 25px;
+            background: linear-gradient(90deg, #00f7ff, #00ffae);
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* ===== ANIMATION ===== */
+        .fade-up {
+            animation: fadeUp 1s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TITLE -->
+    <div class="section-title fade-up">
+        <h1>SENSA Smart Features</h1>
+        <p>Advanced technology designed to ensure rider safety, smart monitoring, and intelligent accident prevention.
+        </p>
+    </div>
+
+    <!-- SAFETY FEATURES -->
+    <h2 class="category fade-up">🛡 Safety Features</h2>
+
+    <div class="feature-grid">
+
+        <div class="feature-card fade-up">
+            <div class="icon">🍺</div>
+            <h3>Alcohol Detection</h3>
+            <p>Prevents bike ignition if alcohol level exceeds safe limit, ensuring responsible riding.</p>
+        </div>
+
+        <div class="feature-card fade-up">
+            <div class="icon">🚨</div>
+            <h3>Accident Detection</h3>
+            <p>Automatically sends emergency alert and location to family members during accidents.</p>
+        </div>
+
+        <div class="feature-card fade-up">
+            <div class="icon">🆘</div>
+            <h3>Emergency SOS</h3>
+            <p>Manual SOS button to instantly request help during critical situations.</p>
+        </div>
+
+    </div>
+
+    <!-- SMART FEATURES -->
+    <h2 class="category fade-up">🤖 Smart Features</h2>
+
+    <div class="feature-grid">
+
+        <div class="feature-card fade-up">
+            <div class="icon">📍</div>
+            <h3>GPS Tracking</h3>
+            <p>Real-time live tracking system for enhanced safety and monitoring.</p>
+        </div>
+
+        <div class="feature-card fade-up">
+            <div class="icon">📶</div>
+            <h3>Bluetooth Connectivity</h3>
+            <p>Seamlessly connects with mobile app for monitoring data and alerts.</p>
+        </div>
+
+        <div class="feature-card fade-up">
+            <div class="icon">🏎</div>
+            <h3>Speed Monitoring</h3>
+            <p>Detects over-speeding and alerts rider to maintain safe speed limits.</p>
+        </div>
+
+    </div>
+
+    <a href="index.html" class="back-btn fade-up">⬅ Back to Home</a>
+
+    <script>
+        document.querySelectorAll('.fade-up').forEach((el, i) => {
+            el.style.animationDelay = (i * 0.3) + "s";
+        });
+    </script>
+
+</body>
+
+</html>
